@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Onramp API</title>
+    <!-- Bootstrap CSS -->
+    <link href="../static/css/data.css" rel="stylesheet" type="text/css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+  
+  </head>
+  <body>
+    
+
+    <div class="header">
+      <div class="main-head">
+        <a href="/" class="active"><img src="../static/images/on ramp api logo.png" class="card-img-top" alt="API Proxies image" height="70px"></a>
+      </div>
+        <a href="/admin_logout"><button class="login-button">Logout</button></a>
+	</div>
+
+    <main>
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12 data-table-sec">
+            <form action="/approve" method="post">            
+                <table width="100%">
+                    <thead>
+                        <tr>
+                            <th>Email ID</th>
+                            <th>Proxy Name</th>
+
+                            <th>File Name</th>
+                            <th>File Path</th>
+                            <th>Is Approved</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for key, value in data.items() %}
+                        <tr>
+                            <td>{{ value["email_id"] }}</td>
+                            <td>{{ value["proxyname"] }}</td>
+                            <td>{{ value["filename"] }}</td>
+                            <td><a href="{{ value['filepath'] }}">download file</a></td>
+                            <td>
+                              <div class="form-check">
+                                <input class="form-check-input" type="checkbox" name="approved[]" value="{{ key }}" id="checkbox-{{ key }}" {% if value['isapproved'] == 1 %}checked{% endif %}>
+                                <label class="form-check-label {% if value['isapproved'] == 1 %}text-success{% endif %}" for="checkbox-{{ key }} checked">
+                                  {{ ' Not Approved' if value['isapproved'] == '0' else 'Viewed' }}
+                                </label>
+                              </div>
+                            </td>
+                            
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+                
+              <div class="text-center">
+                <button type="submit" class="btn btn-primary">View</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </main>
+    {% if msg %}
+      <div class="container msg">
+        <p>{{msg}}</p>
+      </div>
+    {% endif %}
+    <div class="container footer-cont-sec">
+      <div class="footer">
+      <div class="copyright-sec">
+        <a href="https://www.neosalpha.com/" target="_blank">Copyright 2023 © NeosAlpha Technologies. All Rights Reserved.</a>
+      </div>
+      <div class="privacy-sec">
+        <a rel="privacy-policy" href="https://neosalpha.com/privacy-policy/" target="_blank" >Privacy Policy</a> | 
+        <a href="https://neosalpha.com/terms-of-use/" target="_blank">Terms of Use</a>
+      </div>
+    </div>
+    </div>
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <!-- Bootstrap JS -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+  </body>
+</html>

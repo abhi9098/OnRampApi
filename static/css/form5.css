@@ -1,0 +1,118 @@
+.body{
+    margin: 0,0;
+    padding: 0,0; 
+ }
+
+.topnav {
+    position: relative;
+    background-color: #36a3f8;
+    overflow: hidden;
+  }
+  
+
+  .topnav a {
+    float: left;
+    color: #f2f2f2;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 17px;
+  }
+  
+
+  .topnav a.active {
+    font-family: Proxima Nova;
+    font-size: 36px;
+    font-weight: bold;
+    text-align: center;
+    padding: 15px;
+    color: white;
+  }
+  
+
+  .topnav-centered a {
+    float: none;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  
+  .topnav-right {
+    float: right;
+  }
+  
+  /* Responsive navigation menu - display links on top of each other instead of next to each other (for mobile devices) */
+  @media screen and (max-width: 600px) {
+    .topnav a, .topnav-right {
+      float: none;
+      display: block;
+    }
+  
+    .topnav-centered a {
+      position: relative;
+      top: 0;
+      left: 0;
+      transform: none;
+    }
+  }
+
+  .topnav-right a:first-child {
+    margin-top: 12px;
+    font-family: Proxima Nova;
+    font-size: 25px;
+  }
+
+
+  .login-button {
+    background-color: white;
+    color:  #3b5998;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    margin-top: 8px;
+    margin-bottom: 8px;
+    
+}
+.login-button:hover:before{
+    content: "Admin-";
+    color:#008EE2;
+
+}
+.login-button:hover{
+    color: #008EE2;;
+}
+
+
+.tabs-wrap {
+  margin-top: 40px;
+}
+
+.tab-content .tab-pane {
+  padding: 20px 0;
+}
+
+
+
+.footer-cont-sec {
+  margin-top: 80px;
+}
+.footer {
+   position: fixed;
+   left: 0;
+   bottom: 0;
+   width: 100%;
+   background-color: #36a3f8;
+   color: white;
+   text-align: center;
+   height: 50px;
+   padding-top: 12px;
+ }
+
+.footer a{
+   
+   color: white;
+   text-decoration: none;
+}

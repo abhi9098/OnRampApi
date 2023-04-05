@@ -1,0 +1,252 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Apigee Proxy creation</title>
+    <link href="../static/css/form5.css" rel="stylesheet" type="text/css">
+    
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.4.1/dist/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
+
+
+  </head>
+  <body>
+    <!-- Top navigation -->
+<div class="topnav">
+
+    <!-- Centered link -->
+    <div class="topnav-centered">
+      <a href="/" class="active">OnRamp API</a>
+    </div>
+    <div class="topnav-right">
+      <a href="/">Home</a>
+      <a href="/admin/"><button class="login-button">Login</button></a>
+    </div>
+</div>
+
+
+<div class="container tabs-wrap">
+  <ul class="nav nav-tabs" role="tablist">
+      <li role="presentation" class="active">
+          <a href="#billing" aria-controls="billing" role="tab" data-toggle="tab" aria-expanded="true">Proxy details</a>
+      </li>
+      <li>
+          <a href="#shipping" aria-controls="shipping" role="tab" data-toggle="tab" aria-expanded="false">Flows</a>
+      </li>
+      <li>
+          <a href="#review" aria-controls="review" role="tab" data-toggle="tab" aria-expanded="false">Advanced Policies</a>
+      </li>
+  </ul>
+  <div class="tab-content">
+      <div role="tabpanel" class="tab-pane active" id="billing">
+          <h3 class="">Proxy details</h3>
+          {% for key, value in data1.items() %}
+          <div class="formdata">
+              <form action="/proxydata/" method="post">
+                  <div class="form-group">
+                      <label for="proxyname" class="l1">Proxy Name</label>
+                      <input name="proxyname" type="text" class="form-control" id="proxyname" placeholder="proxy name" value="{{ value['email_id'] }}" required>
+                  </div>
+                  <div class="form-group">
+                      <label for="basepath" class="l1">BasePath</label>
+                      <input name="basepath" type="text" class="form-control" id="basepath" placeholder="/basepath" value="{{ value['basepath'] }}" required>
+                  </div>
+                  <div class="form-group">
+                      <label for="description">Description</label>
+                      <input name="description" type="text" class="form-control" id="description" placeholder="Proxy Description" value="{{ value['description'] }}">
+                  </div>
+                  <div class="form-group">
+                      <label for="url">Url (default)</label>
+                      <input name="target" type="text" class="form-control" id="url" placeholder="e.g., https://mocktarget.apigee.net" value="{{ value['targeturl'] }}" required>
+                  </div>
+              </form>
+              
+              <a class="btn btn-primary continue">Continue</a>
+          </div>
+          
+      </div>
+      {% endfor %} 
+
+      <div role="tabpanel" class="tab-pane" id="shipping">
+          <h3 class="">OpenAPI operations</h3>
+          <div class="container b_table">
+              <table class="table">
+                  <thead>
+                      <tr>
+                          <th>Endpoint</th>
+                          <th>Methods</th>
+                          <th>Summary</th>
+                      </tr>
+                  </thead>
+                  <tbody> {% for key, value in data1.items() %} <tr>
+                          <td>{{ key }}</td>
+                          <td>{{ value[0] }}</td>
+                          <td>{{ value[1] }}</td>
+                      </tr> {% endfor %} </tbody>
+              </table>
+          </div>
+          <a class="btn btn-primary back">Go Back</a>
+          <a class="btn btn-primary continue">Continue</a>
+      </div>
+      <div role="tabpanel" class="tab-pane" id="review">
+          <h3 class="">Policies</h3>
+          <div class="container policies_form">
+            {% for key, value in data1.items() %}
+              <form action="/modify_data/" method="post">
+                  <div class="form-group container ">
+                      <h5>ConsumerOfThe API</h5>
+                      <div class="row">
+                          <div class="col-sm-2">
+                              <label for="tps_allowed">TPS Allowed :</label>
+                          </div>
+                          <div class="col-sm-2">
+                              <input type="text" name="tps_allowed" class="form-control" id="tps_allowed" placeholder="TPS" value ="{{ value['tps'] }}" >
+                          </div>
+                          <div class="col-sm-2">
+                              <label for="quota_allowed">Quota Allowed :</label>
+                          </div>
+                          <div class="col-sm-2">
+                              <input type="text" name="quota_allowed_count" class="form-control" id="quota_allowed" placeholder="Count" value ="{{ value['quota_count'] }}">
+                          </div>
+                          <div class="col-sm-2">
+                              <input type="text" name="quota_allowed_interval" class="form-control" id="quota_allowed" placeholder="Interval" value ="{{ value['quota_interval'] }}">
+                          </div>
+                          <div class="col-sm-2">
+                              <select name="timeunit" class="form-control" value ="{{ value['quota_timeunit'] }}">
+                                  <option>minute</option>
+                                  <option>hour</option>
+                                  <option>day</option>
+                                  <option>week</option>
+                                  <option>month</option>
+                              </select>
+                          </div>
+                      </div>
+                      <h5>Backend Of the API</h5>
+                      <div class="row">
+                          <div class="col-sm-2">
+                              <label for="max_tps">MAX TPS :</label>
+                          </div>
+                          <div class="col-sm-2">
+                              <input type="text" name="max_tps" class="form-control" id="max_tps" placeholder="Max TPS" value ="{{ value['max_tps'] }}">
+                          </div>
+                          <div class="col-sm-2">
+                              <label for="max_quota">MAX Quota :</label>
+                          </div>
+                          <div class="col-sm-2">
+                              <input type="text" name="max_quota_count" class="form-control" id="max_quota" placeholder="Count" value ="{{ value['max_quota_count'] }}">
+                          </div>
+                          <div class="col-sm-2">
+                              <input type="text" name="max_quota_interval" class="form-control" id="max_quota" placeholder="Interval" value ="{{ value['max_quota_interval'] }}">
+                          </div>
+                          <div class="col-sm-2">
+                              <select name="max_timeunit" class="form-control" id="max_quota" value ="{{ value['max_quota_timeunit'] }}">
+                                  <option>minute</option>
+                                  <option>hour</option>
+                                  <option>day</option>
+                                  <option>week</option>
+                                  <option>month</option>
+                              </select>
+                          </div>
+                      </div>
+                      <h5>backend Security Options</h5>
+                      <div class="row">
+                          <div class="col-sm-2">
+                             
+                              <label for="apikey">API key :</label>
+                          </div>
+                          <div class="col-sm-4">
+                              <input type="text" name="apikey" class="form-control" id="apikey_input" placeholder="API key" value ="{{ value['apikey'] }}" >
+                          </div>
+                      </div>
+                      <div class="row">
+                          <div class="col-sm-2">
+                           
+                              <label for="basicauth">Basic Auth :</label>
+                          </div>
+                          <div class="col-sm-4">
+                              <input type="text" name="username_ba" class="form-control" id="basicauth_username_input" placeholder="Username" value ="{{ value['basicauth_username'] }}">
+                          </div>
+                          <div class="col-sm-4">
+                              <input type="text" name="password_ba" class="form-control" id="basicauth_password_input" placeholder="Password" value ="{{ value['basicauth_password'] }}">
+                          </div>
+                      </div>
+                      <div class="row">
+                          <div class="col-sm">
+                             
+                              <label>OAuth :</label>
+                          </div>
+                      </div>
+                      <div class="row" id="oauth_inputs" >
+                          <div class="col-sm-2">
+                              <label for="Outhurl">OAuth URL:</label>
+                          </div>
+                          <div class="col-sm-2">
+                              <input type="text" name="oauthurl" class="form-control" id="oauthurl" placeholder="URL" value="{{'oauthurl'}}">
+                          </div>
+                          <div class="col-sm-2">
+                              <label for="c_id">Client_ID:</label>
+                          </div>
+                          <div class="col-sm-2">
+                              <input type="text" name="clientid" class="form-control" id="c_id" placeholder="client_id" value="{{'clientid'}}">
+                          </div>
+                          <div class="col-sm-2">
+                              <label for="c_secret">Client_Secret:</label>
+                          </div>
+                          <div class="col-sm-2">
+                              <input type="text" name="clientsecret" class="form-control" id="c_secret" placeholder="client_secret" value="{{'clientsecret'}}">
+                          </div>
+                      </div>
+                      <div class="row">
+                          <div class="col-sm-2">
+                              <label>MTLS Cert upload:</label>
+                          </div>
+                          <div class="col-sm-2">
+                              <input type="file" id="myFile" name="filename">
+                          </div>
+                      </div>
+                      <h5>Backend API Endpoint:</h5>
+                      <div class="row ">
+                          <div class="col-sm-2">
+                              <label for="endpointurl">URL :</label>
+                          </div>
+                          <div class="col-sm-2">
+                              <input type="text" class="form-control" id="endpointurl" placeholder="URL">
+                          </div>
+                      </div>
+                  </div>
+              </form>
+          </div>
+          <a class="btn btn-primary back">Go Back</a>
+          <a class="btn btn-primary continue">Submit</a>
+      </div>
+  </div>
+</div>
+<div id="push"></div>
+
+
+{% endfor %}
+
+<div class="footer-cont-sec">
+<div class="footer">
+    <a href="https://www.neosalpha.com/">Neosalpha</a>
+</div>
+</div>
+
+<script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha384-nvAa0+6Qg9clwYCGGPpDQLVpLNn0fRaROjHqs13t4Ggj3Ez50XnGQqc/r8MhnRDZ" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@3.4.1/dist/js/bootstrap.min.js" integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd" crossorigin="anonymous"></script>
+
+
+<script>
+  jQuery('.continue').click(function() {
+    jQuery('.nav-tabs > .active').next('li').find('a').trigger('click');
+  });
+  jQuery('.back').click(function() {
+    jQuery('.nav-tabs > .active').prev('li').find('a').trigger('click');
+  });    
+  </script>
+
+</body>
+
+
+
+</html>

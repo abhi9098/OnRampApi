@@ -1,0 +1,226 @@
+html, body{
+    margin: 0% 0%;
+}
+
+/* ============================
+        Navbar
+============================ */
+
+.login-page img.card-img-top {
+  width: auto;
+}
+
+.main-head.login-page {
+  text-align: center;
+  margin-top: 60px;
+}
+form.admin-login {
+  width: 50%;
+  margin: 20px auto;
+}
+form.admin-login h2 {
+  text-align: center;
+  font-weight: 700;
+}
+
+
+.topnav {
+    position: relative;
+    background-color: #36a3f8;
+    overflow: hidden;
+    margin-top: 0%;
+  }
+  .main-head a.active {
+    margin-left: 30px;
+}
+
+  /* Style the links inside the navigation bar */
+  .topnav a {
+    float: left;
+    color: #f2f2f2;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 17px;
+  }
+  
+  /* Add a color to the active/current link */
+  .topnav a.active {
+    font-family: Proxima Nova;
+    font-size: 36px;
+    font-weight: bold;
+    text-align: center;
+    padding: 15px;
+    color: white;
+  }
+  
+  /* Centered section inside the top navigation */
+  .topnav-centered a {
+    float: none;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  
+  /* Right-aligned section inside the top navigation */
+  .topnav-right {
+    float: right;
+  }
+  
+  /* Responsive navigation menu - display links on top of each other instead of next to each other (for mobile devices) */
+  @media screen and (max-width: 600px) {
+    .topnav a, .topnav-right {
+      float: none;
+      display: block;
+    }
+  
+    .topnav-centered a {
+      position: relative;
+      top: 0;
+      left: 0;
+      transform: none;
+    }
+  }
+
+  .topnav-right a:first-child {
+    margin-top: 12px;
+    font-family: Proxima Nova;
+    font-size: 25px;
+  }
+
+
+.login-button {
+    background-color: white;
+    color:  #3b5998;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    margin-top: 8px;
+    margin-bottom: 8px;
+    
+}
+.login-button:hover:before{
+    content: "Admin-";
+    color:#008EE2;
+
+}
+.login-button:hover{
+    color: #008EE2;;
+}
+
+
+
+
+
+
+/* 
+=================================
+            home.css
+================================= */
+
+.block{
+    text-decoration: none;
+}
+
+  
+.cards {
+  margin: 60px auto;
+  width: 60%;
+  padding: 60px 40px;    
+}
+
+
+
+.cards svg {
+    width: 200px;
+    margin: 0 auto;
+    display: block;
+    filter: invert(49%) sepia(97%) saturate(407%) hue-rotate(167deg) brightness(98%) contrast(99%);
+  }
+  
+ .cards:hover svg {
+  filter: invert(16%) sepia(50%) saturate(2279%) hue-rotate(183deg) brightness(94%) contrast(104%);
+  
+  }
+  
+.cards:hover{
+    background-color: rgb(54 163 248 / 10%);
+    border: 1px solid #36a3f8;
+    border-radius: 10px;    
+}
+.cards:hover .card-body h5.card-title {
+    color: #36a3f8;
+}
+.cards:hover .card-body p.card-text {
+    color: #36a3f8;
+}
+
+.cards img{
+    width: 100px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 20px;
+    
+}
+.cards:hover img {
+    filter: invert(51%) sepia(58%) saturate(2149%) hue-rotate(187deg) brightness(107%) contrast(101%);
+}
+.card-body h5,p{
+    text-align: center;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    color: #3b5998;
+    
+}
+
+.form-group .f_input{
+    padding-left: 28%;
+    padding-bottom: 10px;
+}
+
+
+
+
+
+/* 
+===================================
+        footer
+=================================== */
+
+.footer-cont-sec {
+  margin-top: 80px;
+  background-color: #36a3f8;
+}
+.footer {
+   position: fixed;
+   left: 0;
+   right: 0;
+   bottom: 0;
+   width: 100%;
+   color: white;
+   text-align: center;
+   height: 50px;
+   padding-top: 12px;
+   background-color: #36a3f8;
+ }
+
+ .copyright-sec {
+  width: 50%;
+  float: left;
+}
+
+.privacy-sec {
+  width: 50%;
+  text-align: right;
+  display: inline;
+}
+
+.footer a{
+   
+   color: white;
+   text-decoration: none;
+}

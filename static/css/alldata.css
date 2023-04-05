@@ -1,0 +1,70 @@
+.header {
+    background: #36a3f8;
+    /* background: linear-gradient(to right, #008EE2, #0072C6); */
+    font-family: Proxima Nova;
+    font-size: 36px;
+    font-weight: bold;
+    text-align: center;
+    padding: 15px;
+    color: white;
+    display: flex; /* add this to enable flexbox layout */
+    justify-content: space-between; /* add this to align items to both ends */
+}
+
+.header h1{
+    padding-left: 42%;
+    font-weight: bolder;
+}
+
+.login-button {
+    background-color: white;
+    color: #008EE2;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    margin-top: 8px;
+    margin-bottom: 8px;
+    
+}
+
+
+.submit{
+    /* padding-bottom: 200px; */
+    padding-top: 20px;
+}
+
+.footer-cont-sec {
+    margin-top: 80px;
+    background-color: #36a3f8;
+  }
+  .footer {
+     position: fixed;
+     left: 0;
+     right: 0;
+     bottom: 0;
+     width: 100%;
+     color: white;
+     text-align: center;
+     height: 50px;
+     padding-top: 12px;
+     background-color: #36a3f8;
+   }
+  
+   .copyright-sec {
+    width: 50%;
+    float: left;
+  }
+  
+  .privacy-sec {
+    width: 50%;
+    text-align: right;
+    display: inline;
+  }
+  
+  .footer a{
+     
+     color: white;
+     text-decoration: none;
+  }

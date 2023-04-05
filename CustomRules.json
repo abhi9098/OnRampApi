@@ -1,0 +1,16 @@
+{
+    "proxyname_rule":{
+        "proxyname_prefix":"NA",
+        "proxyname_postfix":"Apigee"
+        
+    },
+    "method_rule":{
+        "method":"PUT"
+
+    },
+    "regex_rule":{
+        "allowed":"False"   
+    }
+
+
+}
